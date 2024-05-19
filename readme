@@ -1,0 +1,29 @@
+# Banking System
+
+This project is a simple banking system implemented in TypeScript. It includes `CheckingAccount` and `InvestmentAccount` classes with basic banking operations like deposit and withdrawal.
+
+## Installation 
+
+Clone the repository and install the dependencies:
+
+```
+  git clone https://github.com/coltonpomeroy/OpenLane.git
+  cd OpenLane
+  npm install
+```
+
+# Usage
+
+const checkingAccount = new CheckingAccount('John Doe', 1000);
+checkingAccount.deposit(500);
+checkingAccount.withdraw(200);
+
+const investmentAccount = new InvestmentAccount('Jane Doe', 2000, 'Individual');
+investmentAccount.deposit(500);
+investmentAccount.withdraw(200);
+
+# Tests
+
+To run tests, use the following command:
+
+`npm run test`
