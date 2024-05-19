@@ -53,17 +53,27 @@ export class InvestmentAccount implements Account {
     this.transactions.push({ type: 'Deposit', amount });
   }
 
-  withdraw(amount: number) {
+  checkWithdrawalLimit(amount: number) {
     if (this.type === 'Individual' && amount > 500) {
       throw new Error('Withdrawal limit for Individual account is 500 dollars');
     }
+  }
 
-    if (this.balance >= amount) {
-      this.balance -= amount;
-      this.transactions.push({ type: 'Withdraw', amount });
-    } else {
+  checkSufficientBalance(amount: number) {
+    if (this.balance < amount) {
       throw new Error('Insufficient balance');
     }
+  }
+
+  recordTransaction(amount: number) {
+    this.transactions.push({ type: 'Withdraw', amount });
+  }
+
+  withdraw(amount: number) {
+    this.checkWithdrawalLimit(amount);
+    this.checkSufficientBalance(amount);
+    this.balance -= amount;
+    this.recordTransaction(amount);
   }
 }
 
